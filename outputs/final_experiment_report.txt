@@ -1,0 +1,102 @@
+GENOMIC SEQUENCE ANALYSIS & CLASSIFICATION REPORT
+============================================================
+
+1. DATASET SUMMARY
+------------------------------------------------------------
+Number of sequences: 240
+Number of classes: 4
+Classes: OrganismA_lowGC, OrganismB_midGC, OrganismC_highGC, OrganismD_midGC_alt
+
+2. TOP RECURRING 6-MERS
+------------------------------------------------------------
+TTAAGG: found in 70 sequences
+ATCGAT: found in 69 sequences
+GCTAGC: found in 68 sequences
+GGCCGG: found in 66 sequences
+GCCGGG: found in 42 sequences
+GGGCCG: found in 41 sequences
+GCCGGC: found in 40 sequences
+CGCGGC: found in 40 sequences
+TCGATA: found in 39 sequences
+CCCCGC: found in 38 sequences
+
+3. CLASSICAL MACHINE LEARNING RESULTS
+------------------------------------------------------------
+
+RandomForest
+Test accuracy: 0.9333 (93.33%)
+Cross-validation accuracy: 0.9167 +/- 0.0351
+
+Classification report:
+                     precision    recall  f1-score   support
+
+    OrganismA_lowGC       1.00      1.00      1.00        15
+    OrganismB_midGC       0.87      0.87      0.87        15
+   OrganismC_highGC       1.00      1.00      1.00        15
+OrganismD_midGC_alt       0.87      0.87      0.87        15
+
+           accuracy                           0.93        60
+          macro avg       0.93      0.93      0.93        60
+       weighted avg       0.93      0.93      0.93        60
+
+
+SVM
+Test accuracy: 0.8500 (85.00%)
+Cross-validation accuracy: 0.8667 +/- 0.0408
+
+Classification report:
+                     precision    recall  f1-score   support
+
+    OrganismA_lowGC       1.00      1.00      1.00        15
+    OrganismB_midGC       0.67      0.80      0.73        15
+   OrganismC_highGC       1.00      1.00      1.00        15
+OrganismD_midGC_alt       0.75      0.60      0.67        15
+
+           accuracy                           0.85        60
+          macro avg       0.85      0.85      0.85        60
+       weighted avg       0.85      0.85      0.85        60
+
+
+LogisticRegression
+Test accuracy: 0.8667 (86.67%)
+Cross-validation accuracy: 0.8611 +/- 0.0527
+
+Classification report:
+                     precision    recall  f1-score   support
+
+    OrganismA_lowGC       1.00      1.00      1.00        15
+    OrganismB_midGC       0.68      0.87      0.76        15
+   OrganismC_highGC       1.00      1.00      1.00        15
+OrganismD_midGC_alt       0.82      0.60      0.69        15
+
+           accuracy                           0.87        60
+          macro avg       0.88      0.87      0.86        60
+       weighted avg       0.88      0.87      0.86        60
+
+
+4. DEEP LEARNING RESULT
+------------------------------------------------------------
+Model: 1D Convolutional Neural Network
+Test accuracy: 0.7833 (78.33%)
+
+The CNN was trained using one-hot encoded DNA sequences.
+
+5. FINAL MODEL COMPARISON
+------------------------------------------------------------
+RandomForest           93.33%
+LogisticRegression     86.67%
+SVM                    85.00%
+CNN                    78.33%
+
+Best model: RandomForest
+Best test accuracy: 93.33%
+
+6. INTERPRETATION
+------------------------------------------------------------
+The experiment compares classical machine-learning methods using k-mer frequency features with a 1D convolutional neural network using one-hot encoded DNA sequences.
+
+Random Forest achieved higher test accuracy than the CNN on this dataset. This suggests that the k-mer feature representation combined with a classical ensemble model is effective for this relatively small synthetic dataset.
+
+The lower CNN performance should not be interpreted as evidence that CNNs are inferior for genomic sequence analysis in general. Deep-learning models typically benefit from larger datasets and more extensive training.
+
+Note: The dataset used in this project is synthetic and relatively small. Therefore, the reported accuracies demonstrate the behavior of the implemented methods rather than real-world biological prediction performance.
